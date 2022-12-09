@@ -1,0 +1,13 @@
+.footer {
+  max-width: 68.75%;
+  margin: 67px auto 0px;
+  padding-bottom: 60px;
+  display: flex;
+  justify-content: start;
+}
+@media (max-width: 425px) {/* CSS для экранов меньше 425px */
+  .footer {
+    max-width: 88.125%;
+    margin: 48px auto 36px;
+  }
+}

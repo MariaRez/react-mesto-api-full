@@ -1,0 +1,31 @@
+.profile__description {
+    margin: 0;
+    padding: 0;
+    font-weight: 400;
+    line-height: 22px;
+    font-size: 18px;
+    color: #FFFFFF;
+    min-width: 336px;
+    max-width: 336px;
+    padding-top: 16px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+@media (max-width: 767px) {/* CSS для экранов меньше 425px */
+    .profile__description {
+        text-align: center;
+        padding-bottom: 36px;
+    }
+}
+
+@media (max-width: 425px) {/* CSS для экранов меньше 425px */
+    .profile__description {
+        margin: 0 auto;
+        font-size: 14px;
+        line-height: 17px;
+        min-width: 282px;
+        max-width: 282px;
+    }
+}

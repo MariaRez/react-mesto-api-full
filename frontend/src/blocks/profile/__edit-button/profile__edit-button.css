@@ -1,0 +1,27 @@
+.profile__edit-button {
+    width: 24px;
+    height: 24px;
+    box-sizing: border-box;
+    border: 1px solid #FFF; /*округление границ у данной кнопки по макету не предусмотрено*/
+    background-color: #000;
+    background-image: url(/src/images/edit_big.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    outline: none;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+.profile__edit-button:hover{
+    opacity: 0.6;
+    cursor: pointer;
+}
+
+
+@media (max-width: 425px) {/* CSS для экранов меньше 425px */
+    .profile__edit-button {
+        width: 18px;
+        height: 18px;
+        background-image: url(/src/images/edit.svg);
+    }
+}

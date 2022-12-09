@@ -1,0 +1,9 @@
+.popup__field_type_description {
+    margin: 0px 36px 0px 36px;
+}
+
+@media (max-width: 767px) {
+    .popup__field_type_description {
+        margin: 0px 22px 0px 22px;
+    }
+}

@@ -1,0 +1,18 @@
+.elements {
+margin: 0 auto;
+padding-top: 51px;
+max-width: 68.75%;
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(282px, 1fr));
+column-gap: 17px;
+row-gap: 20px;
+justify-content: center;
+justify-items: center;
+}
+
+@media (max-width: 425px) {/* CSS для экранов меньше 425px */
+    .elements {
+        min-width: 88.125%;
+        padding-top: 36px;
+    }
+}

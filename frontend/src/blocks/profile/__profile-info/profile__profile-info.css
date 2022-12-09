@@ -1,0 +1,23 @@
+.profile__profile-info {
+    max-width: 336px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    padding-left: 30px;
+}
+
+@media (max-width: 767px) {
+    .profile__profile-info {
+        margin: 0 auto;
+        padding-left: 0px;
+        justify-content: center;
+        padding-top: 22.25px;
+    }
+}
+
+@media (max-width: 425px) {/* CSS для экранов меньше 425px */
+    .profile__profile-info {
+        max-width: 282px;
+    }
+}

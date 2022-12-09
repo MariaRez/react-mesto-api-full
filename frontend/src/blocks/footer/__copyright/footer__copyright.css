@@ -1,0 +1,13 @@
+.footer__copyright {
+  margin: 0;
+  line-height: 22px;
+  font-size: 18px;
+  font-weight: 400;
+  color: #545454;
+}
+@media (max-width: 425px) {/* CSS для экранов меньше 425px */
+  .footer__copyright {
+   font-size: 14px;
+   line-height: 17px;
+  }
+}

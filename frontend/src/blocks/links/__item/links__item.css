@@ -1,0 +1,22 @@
+.links__item {
+    margin: 0;
+    padding-bottom: 41px;
+    color: #FFFFFF;
+    outline: none;
+    text-decoration: none;
+    cursor: pointer;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+.links__item:hover {
+    opacity: 0.6;
+}
+
+@media (max-width: 425px) {
+    .links__item {
+        padding-left: 27px;
+        padding-bottom: 31.6px;
+        max-width: 103.74px;
+    }
+}

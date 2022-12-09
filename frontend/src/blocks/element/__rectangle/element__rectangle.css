@@ -1,0 +1,10 @@
+.element__rectangle {
+margin: 0;
+padding-left: 21px;
+padding-right: 30px;
+min-width: 246px;
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+}

@@ -1,0 +1,13 @@
+.signin__link {
+    color: #FFFFFF;
+    outline: none;
+    text-decoration: none;
+    cursor: pointer;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+    margin-left: 4px;
+}
+
+.signin__link:hover {
+    opacity: 0.6;
+}

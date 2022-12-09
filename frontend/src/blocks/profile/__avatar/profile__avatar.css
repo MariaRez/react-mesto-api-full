@@ -1,0 +1,26 @@
+.profile__avatar {
+  display: flex;
+  position: relative;
+}
+
+.profile__avatar:hover:after{
+  background-image: url(/src/images/editavatar.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  position: absolute;
+  content: "";
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 100px;
+  background-color: black;
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+@media (max-width: 767px) { 
+  .profile__avatar{
+    margin: 0 auto;
+  }
+}

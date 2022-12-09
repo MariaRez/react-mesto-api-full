@@ -1,0 +1,5 @@
+@import url(../../blocks/popup/popup.css);
+@import url(../../blocks/popup/_opened/popup_opened.css);
+@import url(../../blocks/popup/__status-container/popup__status-container.css);
+@import url(../../blocks/popup/__status-image/popup__status-image.css);
+@import url(../../blocks/popup/__status-title/popup__status-title.css);

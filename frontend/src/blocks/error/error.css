@@ -1,0 +1,16 @@
+.error {
+  font-size: 12px;
+  line-height: 15px;
+  color: #FF0000;
+  display: inline-block;
+  height: 30px;
+  margin: 0px 36px 0px 36px;
+  opacity: 0;
+  transition: 0.3s;
+}
+
+@media (max-width: 767px) {
+  .error {
+     margin: 0px 22px 0px 22px;
+  }
+}
