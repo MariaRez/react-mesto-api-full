@@ -40,17 +40,18 @@ class Auth {
     return fetch(`${this._baseUrl}/users/me`, {
       method: "GET",
       headers: {
-        Accept: "application/json",
+        "Accept": "application/json",
         "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
+        "Authorization": `Bearer ${token}`,
       },
     }).then(this._сheckServerResponseStatus);
   }
 }
 
 export const auth = new Auth({
-  baseUrl: "https://auth.nomoreparties.co",
+  baseUrl: "http://localhost:3001",
   headers: {
+    "Accept": "application/json",
     "Content-Type": "application/json",
   },
 });
