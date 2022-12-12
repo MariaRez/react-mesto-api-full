@@ -36,15 +36,17 @@ function Main(props) {
         ></button>
       </section>
       <section className="elements">
-        {props.cards.map((element) => (
-          <Card
-            card={element}
-            onCardClick={props.onCardClick}
-            onCardLike={props.onCardLike}
-            onCardDelete={props.onCardDelete}
-            key={element._id}
-          />
-        ))}
+        {Array.isArray(props.cards)
+          ? props.cards.map((element) => {
+              <Card
+                card={element}
+                onCardClick={props.onCardClick}
+                onCardLike={props.onCardLike}
+                onCardDelete={props.onCardDelete}
+                key={element._id}
+              />;
+            })
+          : null}
       </section>
     </main>
   );

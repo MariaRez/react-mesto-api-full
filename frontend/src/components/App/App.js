@@ -42,6 +42,22 @@ function App() {
     avatar: "",
   });
 
+  React.useEffect(() => {
+    if (loggedIn) { Promise.all([api.getInitialCards(), api.getUserInfo()])
+      .then(([initialCards, userInfo]) => {
+        setCards(initialCards);
+        setCurrentUser(userInfo);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    }
+  }, [loggedIn]);
+
+  React.useEffect(() => {
+    checkToken();
+  }, []);
+
   function checkToken() {
     const token = localStorage.getItem("token");
     if (token) {
@@ -58,21 +74,6 @@ function App() {
         });
     }
   }
-
-  React.useEffect(() => {
-    Promise.all([api.getInitialCards(), api.getUserInfo()])
-      .then(([initialCards, userInfo]) => {
-        setCards(initialCards);
-        setCurrentUser(userInfo);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
-
-  React.useEffect(() => {
-    checkToken();
-  }, []);
 
   function handleUpdateAvatar(avatar) {
     api
