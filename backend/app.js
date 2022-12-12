@@ -2,12 +2,27 @@ const express = require('express');
 const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
 const mongoose = require('mongoose');
+const cors = require('cors');
 const bodyParser = require('body-parser');
 const { errors, celebrate, Joi } = require('celebrate');
 const { login, createUser } = require('./controllers/users');
 const { auth } = require('./middlewares/auth');
-const handlerErrors = require('./middlewares/handlerErrors');
+// const handlerErrors = require('./middlewares/handlerErrors'); - пока закомментирован для проверки
 const NotFoundError = require('./errors/NotFoundError');
+
+const options = { // для cors настройки
+  origin: [
+    'https://localhost:3000',
+    'http://localhost:3000',
+    'https://localhost:3001',
+    'http://localhost:3001',
+  ],
+  methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
+  preflightContinue: false,
+  optionsSuccessStatus: 204,
+  allowedHeaders: ['Content-Type', 'origin', 'Authorization'],
+  credentials: true,
+};
 
 const { PORT = 3001 } = process.env;
 const app = express();
@@ -30,6 +45,8 @@ mongoose.connect('mongodb://localhost:27017/mestodb', {
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
+app.use('*', cors(options));
 
 // роуты, которым авторизация нужна
 app.use('/users', auth, require('./routes/users'));
@@ -58,8 +75,8 @@ app.use((req, res, next) => {
 
 // celebrate error handler
 app.use(errors());
-// функция обработки ошибок
-app.use(handlerErrors);
+// функция обработки ошибок - пока закомментирован для проверки
+// app.use(handlerErrors);
 
 app.listen(PORT, () => {
   console.log(`App listening on port ${PORT}`);

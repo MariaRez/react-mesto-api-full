@@ -1,7 +1,6 @@
 class Auth {
-  constructor({ baseUrl, headers }) {
+  constructor({ baseUrl }) {
     this._baseUrl = baseUrl;
-    this._headers = headers;
   }
 
   _сheckServerResponseStatus(res) {
@@ -15,7 +14,10 @@ class Auth {
     //регистрация нового пользователя
     return fetch(`${this._baseUrl}/signup`, {
       method: "POST",
-      headers: this._headers,
+      headers: { 
+        "Accept": "application/json",
+        "Content-Type": "application/json",
+      },
       body: JSON.stringify({
         password: `${password}`,
         email: `${email}`,
@@ -27,7 +29,10 @@ class Auth {
     //вход зарегистрированового пользователя
     return fetch(`${this._baseUrl}/signin`, {
       method: "POST",
-      headers: this._headers,
+      headers: { 
+        "Accept": "application/json",
+        "Content-Type": "application/json",
+      },
       body: JSON.stringify({
         password: `${password}`,
         email: `${email}`,
@@ -39,7 +44,7 @@ class Auth {
     //проверка валидности токена
     return fetch(`${this._baseUrl}/users/me`, {
       method: "GET",
-      headers: {
+      headers: { 
         "Accept": "application/json",
         "Content-Type": "application/json",
         "Authorization": `Bearer ${token}`,
@@ -50,8 +55,4 @@ class Auth {
 
 export const auth = new Auth({
   baseUrl: "http://localhost:3001",
-  headers: {
-    "Accept": "application/json",
-    "Content-Type": "application/json",
-  },
 });

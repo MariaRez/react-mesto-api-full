@@ -1,7 +1,6 @@
 class Api {
-    constructor({ baseUrl, headers }) {
+    constructor({ baseUrl }) {
       this._baseUrl = baseUrl;
-      this._headers = headers;
     }
   
     _сheckServerResponseStatus(res) {
@@ -15,38 +14,51 @@ class Api {
       //Загрузка информации о пользователе с сервера (имя, описание и аватар)
       return fetch(`${this._baseUrl}/users/me`, {
         method: "GET",
-        headers: this._headers,
+        headers: { 
+          authorization: `Bearer ${localStorage.getItem('token')}`,
+          'Content-Type': 'application/json',
+        },
       }).then(this._сheckServerResponseStatus);
     }
-  
+
     getInitialCards() {
       //Загрузка карточек с сервера
       return fetch(`${this._baseUrl}/cards`, {
         method: "GET",
-        headers: this._headers,
+        headers: { 
+          authorization: `Bearer ${localStorage.getItem('token')}`,
+          "Content-Type": "application/json",
+        },
       }).then(this._сheckServerResponseStatus);
     }
-  
-    editProfile(data) {
+
+
+    editProfile({name, about}) {
       //Редактирование профиля - имя и описание
       return fetch(`${this._baseUrl}/users/me`, {
         method: "PATCH",
-        headers: this._headers,
+        headers: { 
+          authorization: `Bearer ${localStorage.getItem('token')}`,
+          "Content-Type": "application/json",
+        },
         body: JSON.stringify({
-          name: data.name,
-          about: data.about,
+          name,
+          about,
         }),
       }).then(this._сheckServerResponseStatus);
     }
   
-    addNewCard(data) {
+    addNewCard({name,link}) {
       //Добавление новой карточки
       return fetch(`${this._baseUrl}/cards`, {
         method: "POST",
-        headers: this._headers,
+        headers: { 
+          authorization: `Bearer ${localStorage.getItem('token')}`,
+          "Content-Type": "application/json",
+        },
         body: JSON.stringify({
-          name: data.name,
-          link: data.link,
+          name,
+          link,
         }),
       }).then(this._сheckServerResponseStatus);
     }
@@ -55,7 +67,10 @@ class Api {
       // Удаление карточки
       return fetch(`${this._baseUrl}/cards/${_id}`, {
         method: "DELETE",
-        headers: this._headers,
+        headers: { 
+          authorization: `Bearer ${localStorage.getItem('token')}`,
+          "Content-Type": "application/json",
+        },
       }).then(this._сheckServerResponseStatus);
     }
   
@@ -63,23 +78,25 @@ class Api {
       let method = isLiked ? "DELETE" : "PUT";
       return fetch(`${this._baseUrl}/cards/${_id}/likes`, {
         method: method,
-        headers: this._headers,
+        headers: { 
+          authorization: `Bearer ${localStorage.getItem('token')}`,
+          "Content-Type": "application/json",
+        },
       }).then((res) => this._сheckServerResponseStatus(res));
     }
   
-    editAvatar(avatar) {
+    editAvatar({avatar}) {
       return fetch(`${this._baseUrl}/users/me/avatar`, {
         method: "PATCH",
-        headers: this._headers,
-        body: JSON.stringify(avatar),
+        headers: { 
+          authorization: `Bearer ${localStorage.getItem('token')}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({avatar}), 
       }).then(this._сheckServerResponseStatus);
     }
   }
   
   export const api = new Api({
     baseUrl: "http://localhost:3001",
-    headers: {
-      authorization: "5a8f95ef-4485-42ab-852e-86340ac2e69c",
-      "Content-Type": "application/json",
-    },
   });  
