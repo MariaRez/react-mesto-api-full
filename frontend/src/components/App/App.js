@@ -45,8 +45,8 @@ function App() {
   React.useEffect(() => {
     if (loggedIn) { Promise.all([api.getInitialCards(), api.getUserInfo()])
       .then(([initialCards, userInfo]) => {
-        setCards(initialCards);
-        setCurrentUser(userInfo);
+        setCards(initialCards.data);
+        setCurrentUser(userInfo.data);
       })
       .catch((err) => {
         console.log(err);
@@ -79,7 +79,7 @@ function App() {
     api
       .editAvatar(avatar)
       .then((userAvatar) => {
-        setCurrentUser(userAvatar);
+        setCurrentUser(userAvatar.data);
         setIsEditAvatarPopupOpen(false);
       })
       .catch((err) => {
@@ -91,7 +91,7 @@ function App() {
     api
       .editProfile(data)
       .then((userData) => {
-        setCurrentUser(userData);
+        setCurrentUser(userData.data);
         setIsEditProfilePopupOpen(false);
       })
       .catch((err) => {

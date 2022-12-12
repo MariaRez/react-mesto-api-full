@@ -33,7 +33,7 @@ class Api {
     }
 
 
-    editProfile({name, about}) {
+    editProfile(data) {
       //Редактирование профиля - имя и описание
       return fetch(`${this._baseUrl}/users/me`, {
         method: "PATCH",
@@ -42,13 +42,13 @@ class Api {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          name,
-          about,
+          name: `${data.name}`,
+          about: `${data.about}`
         }),
       }).then(this._сheckServerResponseStatus);
     }
   
-    addNewCard({name,link}) {
+    addNewCard(data) {
       //Добавление новой карточки
       return fetch(`${this._baseUrl}/cards`, {
         method: "POST",
@@ -57,8 +57,8 @@ class Api {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          name,
-          link,
+          name: `${data.place}`,
+          link: `${data.link}`
         }),
       }).then(this._сheckServerResponseStatus);
     }
@@ -85,14 +85,16 @@ class Api {
       }).then((res) => this._сheckServerResponseStatus(res));
     }
   
-    editAvatar({avatar}) {
+    editAvatar(data) {
       return fetch(`${this._baseUrl}/users/me/avatar`, {
         method: "PATCH",
         headers: { 
           authorization: `Bearer ${localStorage.getItem('token')}`,
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({avatar}), 
+        body: JSON.stringify({
+          avatar: `${data.avatar}`
+        }), 
       }).then(this._сheckServerResponseStatus);
     }
   }
