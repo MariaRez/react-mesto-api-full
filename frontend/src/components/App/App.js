@@ -103,7 +103,7 @@ function App() {
     api
       .addNewCard(data)
       .then((newCard) => {
-        setCards([newCard, ...cards]);
+        setCards([newCard.data, ...cards]);
         setIsAddPlacePopupOpen(false);
       })
       .catch((err) => {

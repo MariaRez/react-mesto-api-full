@@ -57,7 +57,7 @@ class Api {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          name: `${data.place}`,
+          name: `${data.name}`,
           link: `${data.link}`
         }),
       }).then(this._сheckServerResponseStatus);

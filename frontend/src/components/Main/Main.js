@@ -38,13 +38,14 @@ function Main(props) {
       <section className="elements">
         {Array.isArray(props.cards)
           ? props.cards.map((element) => {
-              <Card
+              return (<Card
                 card={element}
                 onCardClick={props.onCardClick}
                 onCardLike={props.onCardLike}
                 onCardDelete={props.onCardDelete}
                 key={element._id}
-              />;
+              />
+              )
             })
           : null}
       </section>
