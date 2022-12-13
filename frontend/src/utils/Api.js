@@ -64,6 +64,7 @@ class Api {
     }
   
     deleteCard(_id) {
+      console.log(_id);
       // Удаление карточки
       return fetch(`${this._baseUrl}/cards/${_id}`, {
         method: "DELETE",
@@ -75,6 +76,7 @@ class Api {
     }
   
     toggleLike(_id, isLiked) {
+      console.log(_id);
       let method = isLiked ? "DELETE" : "PUT";
       return fetch(`${this._baseUrl}/cards/${_id}/likes`, {
         method: method,
@@ -84,7 +86,7 @@ class Api {
         },
       }).then((res) => this._сheckServerResponseStatus(res));
     }
-  
+
     editAvatar(data) {
       return fetch(`${this._baseUrl}/users/me/avatar`, {
         method: "PATCH",

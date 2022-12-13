@@ -45,7 +45,7 @@ function App() {
   React.useEffect(() => {
     if (loggedIn) { Promise.all([api.getInitialCards(), api.getUserInfo()])
       .then(([initialCards, userInfo]) => {
-        setCards(initialCards.data);
+        setCards(initialCards.data.reverse()); // карточки должны отображаться - первая - это последняя добавленная
         setCurrentUser(userInfo.data);
       })
       .catch((err) => {
@@ -136,7 +136,8 @@ function App() {
   }
 
   function handleCardLike(card) {
-    const isLiked = card.likes.some((i) => i._id === currentUser._id);
+    const isLiked = card.likes.some(i => i === currentUser._id);
+    console.log(card._id);
     api
       .toggleLike(card._id, isLiked)
       .then((newCard) => {
