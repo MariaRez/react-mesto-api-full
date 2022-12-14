@@ -8,7 +8,7 @@ const { Ok, Created } = require('../constants'); // 200 201
 
 module.exports.getCards = (req, res, next) => { // возвращает все карточки
   Card.find({})
-    .then((cards) => res.status(Ok).send({ data: cards })) // 200
+    .then((cards) => res.status(Ok).send(cards)) // 200
     .catch(next); // создаст 500
 };
 
@@ -48,7 +48,7 @@ module.exports.likeCard = (req, res, next) => { // поставить лайк �
     { new: true },
   )
     .orFail(new NotFoundError(`Карточка указанным с id '${req.params.cardId}' не найдена`))
-    .then((card) => res.status(Ok).send({ data: card }))
+    .then((card) => res.status(Ok).send(card))
     .catch((err) => {
       if (err.name === 'CastError') {
         next(new ValidationError('Переданы некорректные данные при простановке лайка карточке'));
@@ -65,7 +65,7 @@ module.exports.dislikeCard = (req, res, next) => { // убрать лайк с �
     { new: true },
   )
     .orFail(new NotFoundError(`Карточка указанным с id '${req.params.cardId}' не найдена`))
-    .then((card) => res.status(Ok).send({ data: card }))
+    .then((card) => res.status(Ok).send(card))
     .catch((err) => {
       if (err.name === 'CastError') {
         next(new ValidationError('Переданы некорректные данные при простановке лайка карточке'));

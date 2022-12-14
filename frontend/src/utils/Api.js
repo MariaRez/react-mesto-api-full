@@ -15,7 +15,7 @@ class Api {
       return fetch(`${this._baseUrl}/users/me`, {
         method: "GET",
         headers: { 
-          authorization: `Bearer ${localStorage.getItem('token')}`,
+          "Authorization": `Bearer ${localStorage.getItem('token')}`,
           'Content-Type': 'application/json',
         },
       }).then(this._сheckServerResponseStatus);
@@ -26,7 +26,7 @@ class Api {
       return fetch(`${this._baseUrl}/cards`, {
         method: "GET",
         headers: { 
-          authorization: `Bearer ${localStorage.getItem('token')}`,
+          "Authorization": `Bearer ${localStorage.getItem('token')}`,
           "Content-Type": "application/json",
         },
       }).then(this._сheckServerResponseStatus);
@@ -38,7 +38,7 @@ class Api {
       return fetch(`${this._baseUrl}/users/me`, {
         method: "PATCH",
         headers: { 
-          authorization: `Bearer ${localStorage.getItem('token')}`,
+          "Authorization": `Bearer ${localStorage.getItem('token')}`,
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
@@ -53,7 +53,7 @@ class Api {
       return fetch(`${this._baseUrl}/cards`, {
         method: "POST",
         headers: { 
-          authorization: `Bearer ${localStorage.getItem('token')}`,
+          "Authorization": `Bearer ${localStorage.getItem('token')}`,
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
@@ -64,24 +64,23 @@ class Api {
     }
   
     deleteCard(_id) {
-      console.log(_id);
       // Удаление карточки
       return fetch(`${this._baseUrl}/cards/${_id}`, {
         method: "DELETE",
         headers: { 
-          authorization: `Bearer ${localStorage.getItem('token')}`,
+          "Authorization": `Bearer ${localStorage.getItem('token')}`,
           "Content-Type": "application/json",
         },
       }).then(this._сheckServerResponseStatus);
     }
   
     toggleLike(_id, isLiked) {
-      console.log(_id);
+      // console.log(_id);
       let method = isLiked ? "DELETE" : "PUT";
       return fetch(`${this._baseUrl}/cards/${_id}/likes`, {
         method: method,
         headers: { 
-          authorization: `Bearer ${localStorage.getItem('token')}`,
+          "Authorization": `Bearer ${localStorage.getItem('token')}`,
           "Content-Type": "application/json",
         },
       }).then((res) => this._сheckServerResponseStatus(res));
@@ -91,7 +90,7 @@ class Api {
       return fetch(`${this._baseUrl}/users/me/avatar`, {
         method: "PATCH",
         headers: { 
-          authorization: `Bearer ${localStorage.getItem('token')}`,
+          "Authorization": `Bearer ${localStorage.getItem('token')}`,
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
