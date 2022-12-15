@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const { errors, celebrate, Joi } = require('celebrate');
+const { requestLogger, errorLogger } = require('./middlewares/logger');
 const { login, createUser } = require('./controllers/users');
 const { auth } = require('./middlewares/auth');
 const handlerErrors = require('./middlewares/handlerErrors');
@@ -46,6 +47,8 @@ mongoose.connect('mongodb://localhost:27017/mestodb', {
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+app.use(requestLogger); // подключаем логгер запросов
+
 app.use('*', cors(options));
 
 // краш-тест сервера
@@ -79,6 +82,8 @@ app.post('/signup', celebrate({ // POST /signup — создаёт пользо�
 app.use((req, res, next) => {
   next(new NotFoundError('Page Not found 404'));
 });
+
+app.use(errorLogger); // подключаем логгер ошибок
 
 // celebrate error handler
 app.use(errors());
