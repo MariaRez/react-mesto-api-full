@@ -7,7 +7,7 @@ const bodyParser = require('body-parser');
 const { errors, celebrate, Joi } = require('celebrate');
 const { login, createUser } = require('./controllers/users');
 const { auth } = require('./middlewares/auth');
-// const handlerErrors = require('./middlewares/handlerErrors'); - пока закомментирован для проверки
+const handlerErrors = require('./middlewares/handlerErrors');
 const NotFoundError = require('./errors/NotFoundError');
 
 const options = { // для cors настройки
@@ -75,8 +75,8 @@ app.use((req, res, next) => {
 
 // celebrate error handler
 app.use(errors());
-// функция обработки ошибок - пока закомментирован для проверки
-// app.use(handlerErrors);
+// функция обработки ошибок
+app.use(handlerErrors);
 
 app.listen(PORT, () => {
   console.log(`App listening on port ${PORT}`);
