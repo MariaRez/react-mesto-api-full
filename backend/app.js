@@ -13,8 +13,9 @@ const NotFoundError = require('./errors/NotFoundError');
 
 const options = { // для cors настройки
   origin: [
-    'https://localhost:3000',
     'http://localhost:3000',
+    'https://api.mariarez.nomoredomains.club',
+    'http://mariarez.nomoredomains.club',
   ],
   methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
   preflightContinue: false,
