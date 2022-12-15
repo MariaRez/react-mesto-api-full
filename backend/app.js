@@ -16,7 +16,7 @@ const options = { // для cors настройки
   origin: [
     'http://localhost:3000',
     'https://api.mariarez.nomoredomains.club',
-    'http://mariarez.nomoredomains.club',
+    'https://mariarez.nomoredomains.club',
   ],
   methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
   preflightContinue: false,
