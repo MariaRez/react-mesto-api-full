@@ -112,19 +112,15 @@ function App() {
   }
 
   function handleEditAvatarClick() {
-    console.log("Открыли попап для изменения аватара");
     setIsEditAvatarPopupOpen(true);
   }
   function handleEditProfileClick() {
-    console.log("Открыли попап для изменения профиля");
     setIsEditProfilePopupOpen(true);
   }
   function handleAddPlaceClick() {
-    console.log("Открыли попап для добавления новой карточки");
     setIsAddPlacePopupOpen(true);
   }
   function handleCardClick(card) {
-    console.log("Открыли попап большой картинки");
     setSelectedCard(card);
   }
   function closeAllPopups() {
