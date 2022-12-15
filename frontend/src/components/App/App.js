@@ -192,11 +192,21 @@ function App() {
       });
   }
 
+  function handleExitSubmit() {
+    localStorage.removeItem("token");
+    setLoggedIn(false);
+    setEmail("");
+    history.push("/sign-in");
+  }
+
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="body">
         <div className="page">
-          <Header email={email} />
+          <Header
+          email={email}
+          handleExit={handleExitSubmit}
+          />
           <Switch>
             <Route path="/sign-in">
               <Login

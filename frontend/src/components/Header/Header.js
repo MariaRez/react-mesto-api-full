@@ -3,10 +3,6 @@ import logo from "../../images/Vector.svg";
 import { Link, Route } from "react-router-dom";
 
 function Header(props) {
-  function handleClick() {
-    localStorage.removeItem("token");
-  }
-
   return (
     <header className="header">
       <img className="logo" src={logo} alt="Логотоп Место Россия" />
@@ -14,7 +10,7 @@ function Header(props) {
         <div className="links">
           <p className="links__text">{props.email}</p>
           <p>
-            <Link to="/sign-in" className="links__item" onClick={handleClick}>
+            <Link to="/sign-in" className="links__item" onClick={props.handleExit}>
               Выйти
             </Link>
           </p>
