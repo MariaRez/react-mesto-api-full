@@ -101,5 +101,6 @@ class Api {
   }
   
   export const api = new Api({
-    baseUrl: "https://api.mariarez.nomoredomains.club",
+   // baseUrl: "https://api.mariarez.nomoredomains.club",
+   baseUrl: "http://localhost:3001", // убрать после проверки
   });  

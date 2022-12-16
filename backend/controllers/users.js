@@ -39,9 +39,6 @@ module.exports.getUser = (req, res, next) => { // возвращает поль�
 };
 
 module.exports.createUser = (req, res, next) => { // создаёт пользователя
-  if (!req.body.email || !req.body.password) {
-    next(new ValidationError('Не заполнены обязательные поля'));
-  }
   bcrypt.hash(req.body.password, SALT) // хешируем пароль
     .then((hash) => User.create({
       name: req.body.name,
@@ -61,7 +58,7 @@ module.exports.createUser = (req, res, next) => { // создаёт пользо
     .catch((err) => {
       if (err.name === 'ValidationError') {
         next(new ValidationError('Переданы некорректные данные при создании пользователя'));
-      } if (err.code === DuplicateKeyError) {
+      } else if (err.code === DuplicateKeyError) {
         next(new ConflictError('Пользователь с такими данными уже существует'));
       } else {
         next(err); // создаст 500
