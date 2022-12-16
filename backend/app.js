@@ -15,9 +15,6 @@ const NotFoundError = require('./errors/NotFoundError');
 const options = { // для cors настройки
   origin: [
     'http://localhost:3000',
-    'https://localhost:3000', // убрать после проверки
-    'http://localhost:3001', // убрать после проверки
-    'https://localhost:3001', // убрать после проверки
     'https://api.mariarez.nomoredomains.club',
     'https://mariarez.nomoredomains.club',
     'http://api.mariarez.nomoredomains.club',
@@ -30,8 +27,7 @@ const options = { // для cors настройки
   credentials: true,
 };
 
-// const { PORT = 3000 } = process.env;
-const { PORT = 3001 } = process.env; // убрать после проверки
+const { PORT = 3000 } = process.env;
 const app = express();
 
 app.use(helmet()); // helmet для ограничения источников скриптов и других ресурсов

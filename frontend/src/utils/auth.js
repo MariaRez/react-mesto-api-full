@@ -54,6 +54,5 @@ class Auth {
 }
 
 export const auth = new Auth({
-  //baseUrl: "https://api.mariarez.nomoredomains.club",
-  baseUrl: "http://localhost:3001", // убрать после тестирования
+  baseUrl: "https://api.mariarez.nomoredomains.club",
 });
