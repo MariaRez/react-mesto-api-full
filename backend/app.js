@@ -1,7 +1,7 @@
+require('dotenv').config(); // импортирование
 const express = require('express');
 const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
-require('dotenv').config(); // импортирование - ранее на сервере не было
 const mongoose = require('mongoose');
 const cors = require('cors');
 const bodyParser = require('body-parser');
