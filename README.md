@@ -10,6 +10,8 @@
 - mongoDB
 - HTML
 - CSS
+- eslint
+- Airbnb
 
 <h2 align="center">Описание проекта &#128444</h2>
 
